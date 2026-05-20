@@ -35,7 +35,7 @@ import {
 
 import { classSchedules, teachers, testimonials, faqItems } from './data';
 import { ClassSchedule, Registration } from './types';
-import MathPathEstimator from './components/MathPathEstimator';
+
 
 const APPS_SCRIPT_CODE = `function doGet(e) {
   return HtmlService.createHtmlOutput("<h3 style='font-family:sans-serif; text-align:center; padding-top:40px; color:#1e293b;'>Hệ thống tích hợp Google Sheets của Trung Tâm Toán Thạc Sĩ đang hoạt động tốt!</h3>");
@@ -156,47 +156,7 @@ export default function App() {
   // Floating CTA mini menu open on mobile trigger
   const [isCtaMenuOpen, setIsCtaMenuOpen] = useState(false);
 
-  // Quote switcher state
-  const [currentQuoteIndex, setCurrentQuoteIndex] = useState(0);
 
-  const inspirationalQuotes = [
-    {
-      content: "Thành công là kết quả của sự hoàn hảo, làm việc chăm chỉ, học hỏi từ thất bại, lòng trung thành và sự kiên trì.",
-      author: "Colin Powell"
-    },
-    {
-      content: "Kỷ luật là cầu nối giữa mục tiêu và thành tựu.",
-      author: "Jim Rohn"
-    },
-    {
-      content: "Đam mê là năng lượng. Hãy cảm nhận sức mạnh đến từ việc tập trung vào những gì làm bạn hứng thú.",
-      author: "Oprah Winfrey"
-    },
-    {
-      content: "Sự kiên trì không phải là một cuộc chạy đua đường dài; nó là nhiều cuộc chạy đua ngắn liên tiếp nhau.",
-      author: "Walter Elliot"
-    },
-    {
-      content: "Thất bại chỉ là cơ hội để bắt đầu lại một cách thông minh hơn.",
-      author: "Henry Ford"
-    },
-    {
-      content: "Đừng sợ thất bại. Không phải thất bại, mà là mục tiêu quá thấp mới là tội lỗi. Trong những nỗ lực lớn lao, ngay cả thất bại cũng là vinh quang.",
-      author: "Bruce Lee"
-    },
-    {
-      content: "Sự khác biệt giữa những người thành công và những người khác không phải là sự thiếu hụt sức mạnh, không phải là sự thiếu hụt kiến thức, mà đúng hơn là sự thiếu hụt ý chí.",
-      author: "Vince Lombardi"
-    }
-  ];
-
-  // Auto rotate quotes every 6 seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentQuoteIndex((prev) => (prev + 1) % inspirationalQuotes.length);
-    }, 6000);
-    return () => clearInterval(interval);
-  }, []);
 
   // Load registration history from local storage on load
   useEffect(() => {
@@ -319,12 +279,11 @@ export default function App() {
             </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center gap-8">
-              <a href="#about-section" className="text-sm font-medium text-slate-600 hover:text-brand-blue-light transition-colors">Giáo Viên</a>
-              <a href="#schedule-section" className="text-sm font-medium text-slate-600 hover:text-brand-blue-light transition-colors">Lịch Học & Lộ Trình</a>
-              <a href="#estimator-section" className="text-sm font-medium text-slate-600 hover:text-brand-blue-light transition-colors">Thiết Kế Lộ Trình</a>
-              <a href="#faq-section" className="text-sm font-medium text-slate-600 hover:text-brand-blue-light transition-colors">Hỏi Đáp Góp Ý</a>
-              <a href="#register-form" className="text-sm font-medium text-slate-600 hover:text-brand-blue-light transition-colors font-semibold px-3 py-1.5 rounded-lg bg-teal-50 text-teal-700">Tư Vấn Miễn Phí</a>
+            <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
+              <a href="#about-section" className="text-xs xl:text-sm font-medium text-slate-600 hover:text-brand-blue-light transition-colors">Giáo Viên</a>
+              <a href="#schedule-section" className="text-xs xl:text-sm font-medium text-slate-600 hover:text-brand-blue-light transition-colors">Lịch Học & Lộ Trình</a>
+              <a href="#faq-section" className="text-xs xl:text-sm font-medium text-slate-600 hover:text-brand-blue-light transition-colors">Hỏi Đáp Góp Ý</a>
+              <a href="#register-form" className="text-xs xl:text-sm font-medium text-slate-600 hover:text-brand-blue-light transition-colors font-bold px-2.5 py-1.5 rounded-lg bg-teal-50 text-teal-700">Tư Vấn Miễn Phí</a>
             </nav>
 
             {/* Desktop Action Handles */}
@@ -363,37 +322,29 @@ export default function App() {
         {/* Mobile Flyout Navigation */}
         {isMobileMenuOpen && (
           <div className="lg:hidden bg-white border-b border-slate-100 px-4 py-6 space-y-4 animate-fadeIn">
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-3 gap-2">
               <a
                 href="#about-section"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="flex items-center gap-2 p-3 bg-slate-50 hover:bg-slate-100 rounded-xl text-sm font-medium text-slate-700"
+                className="flex flex-col items-center justify-center text-center gap-1.5 p-3 bg-slate-50 hover:bg-slate-100 rounded-xl text-xs font-semibold text-slate-700"
               >
-                <Users className="w-4 h-4 text-brand-blue-light" />
+                <Users className="w-5 h-5 text-brand-blue-light" />
                 <span>Giảng viên</span>
               </a>
               <a
                 href="#schedule-section"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="flex items-center gap-2 p-3 bg-slate-50 hover:bg-slate-100 rounded-xl text-sm font-medium text-slate-700"
+                className="flex flex-col items-center justify-center text-center gap-1.5 p-3 bg-slate-50 hover:bg-slate-100 rounded-xl text-xs font-semibold text-slate-700"
               >
-                <Calendar className="w-4 h-4 text-brand-emerald" />
+                <Calendar className="w-5 h-5 text-brand-emerald" />
                 <span>Lịch học</span>
-              </a>
-              <a
-                href="#estimator-section"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="flex items-center gap-2 p-3 bg-slate-50 hover:bg-slate-100 rounded-xl text-sm font-medium text-slate-700"
-              >
-                <Compass className="w-4 h-4 text-brand-amber" />
-                <span>Lộ trình điểm</span>
               </a>
               <a
                 href="#faq-section"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="flex items-center gap-2 p-3 bg-slate-50 hover:bg-slate-100 rounded-xl text-sm font-medium text-slate-700"
+                className="flex flex-col items-center justify-center text-center gap-1.5 p-3 bg-slate-50 hover:bg-slate-100 rounded-xl text-xs font-semibold text-slate-700"
               >
-                <Info className="w-4 h-4 text-slate-500" />
+                <Info className="w-5 h-5 text-slate-500" />
                 <span>Hỏi đáp</span>
               </a>
             </div>
@@ -451,18 +402,18 @@ export default function App() {
               
               {/* Highlight Badge */}
               <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-blue-50 border border-blue-100 rounded-full text-brand-blue-light text-xs sm:text-sm font-semibold tracking-wide uppercase mx-auto lg:mx-0">
-                <Sparkles className="w-4 h-4 text-brand-amber animate-pulse" />
-                <span>Bứt phá tư duy Toán học đỉnh cao </span>
+                <Sparkles className="w-4 h-4 text-brand-amber" />
+                <span>Lớp học Toán chất lượng cao & hiệu quả</span>
               </div>
 
-              {/* Bold inspiring title requested */}
+              {/* Gentle, humble and practical title */}
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold font-display leading-[1.1] tracking-tight text-slate-900">
-                Vượt Qua <span className="bg-gradient-to-r from-brand-blue-light to-brand-blue bg-clip-text text-transparent">Mọi Giới Hạn</span> Học Thuật Môn Toán
+                Học Toán Bản Chất, <span className="bg-gradient-to-r from-brand-blue-light to-brand-blue bg-clip-text text-transparent">Chinh Phục</span> Điểm Số Cao
               </h1>
 
               {/* M.Sc degree highlight requested */}
               <p className="text-lg text-slate-600 font-sans max-w-2xl leading-relaxed mx-auto lg:mx-0">
-                Trực tiếp giảng dạy bởi <strong className="text-brand-blue font-bold">Thạc sĩ Khoa học bậc Toán học (M.Sc.)</strong> chuyên bồi dưỡng bứt phá điểm số từ <strong className="text-brand-emerald font-bold">Cơ bản đến Nâng cao</strong> và <strong className="text-brand-orange font-bold">Luyện thi Đánh giá năng lực, Tốt nghiệp THPT và Tuyển sinh lớp 10 Công lập</strong>.
+                Trực tiếp giảng dạy bởi <strong className="text-brand-blue font-bold">thầy cô chuyên bồi dưỡng</strong> bứt phá điểm số từ <strong className="text-brand-emerald font-bold">Cơ bản đến Nâng cao</strong> và <strong className="text-brand-orange font-bold">Luyện thi Đánh giá năng lực, Tốt nghiệp THPT và Tuyển sinh lớp 10 Công lập</strong>.
               </p>
 
               {/* Key benefit points */}
@@ -509,93 +460,81 @@ export default function App() {
                       <Star key={idx} className="w-3.5 h-3.5 fill-current" />
                     ))}
                   </span>
-                  <span className="font-bold text-slate-700">100% Phụ huynh</span> hài lòng phản hồi tích cực
+                  <span className="font-bold text-slate-700">Đồng hành tận tụy</span>, nhận được nhiều phản hồi tích cực
                 </div>
-                <div>Đạt tỉ lệ <strong className="text-brand-blue-light">96% học sinh đỗ đúng nguyện vọng</strong> đã đăng ký</div>
+                <div>Chú trọng sự <strong className="text-brand-blue-light font-bold">tiến bộ bền vững</strong> và <strong className="text-brand-emerald font-bold">điểm số thực chất</strong></div>
               </div>
 
             </div>
 
-            {/* Right Display Image Column / Dashboard Mockup */}
+            {/* Right Display Image Column / Interactive Math Dashboard with Real Colored Image Accent */}
             <div className="lg:col-span-5 relative">
-              <div className="relative mx-auto max-w-sm sm:max-w-md lg:max-w-none">
+              <div className="relative mx-auto max-w-sm sm:max-w-md lg:max-w-none space-y-6">
+                
                 {/* Decorative geometries representing Mathematics */}
-                <div className="absolute -top-6 -right-6 lg:-right-10 w-24 h-24 bg-brand-amber/10 rounded-xl -rotate-12 flex items-center justify-center font-display font-black text-4xl text-brand-orange select-none animate-pulse">
+                <div className="absolute -top-6 -right-6 lg:-right-10 w-24 h-24 bg-brand-amber/10 rounded-xl -rotate-12 flex items-center justify-center font-display font-black text-4xl text-brand-orange select-none animate-pulse z-0">
                   f(x)
                 </div>
-                <div className="absolute -bottom-6 -left-6 lg:-left-10 w-20 h-20 bg-brand-emerald/10 rounded-full flex items-center justify-center font-display font-extrabold text-2xl text-brand-emerald select-none">
+                <div className="absolute -bottom-6 -left-6 lg:-left-10 w-20 h-20 bg-brand-emerald/10 rounded-full flex items-center justify-center font-display font-extrabold text-2xl text-brand-emerald select-none z-0">
                   πr²
                 </div>
 
-                {/* Main Hero Card layout simulating high quality maths workspace */}
-                <div className="bg-slate-900 text-slate-100 rounded-3xl p-6 sm:p-8 shadow-2xl border border-slate-800 glow-blue">
-                  <div className="flex items-center justify-between border-b border-slate-800 pb-4 mb-5">
+                {/* Primary Stunning High-Contrast Highlight Image Card with vibrant generated illustration */}
+                <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-blue-100/65 bg-white group hover:shadow-3xl transition-all duration-300 z-10">
+                  <div className="absolute top-4 left-4 z-20">
+                    <span className="text-[10px] font-bold uppercase tracking-widest bg-brand-blue/90 text-white px-3 py-1.5 rounded-full inline-block backdrop-blur-md shadow-md">
+                      Mô hình học tập tư duy
+                    </span>
+                  </div>
+
+                  {/* Generated math banner image! */}
+                  <div className="aspect-[16/10] overflow-hidden bg-slate-900 relative">
+                    <img
+                      src="/src/assets/images/hero_math_banner_1779264546433.png"
+                      alt="Lớp học Toán Thạc sĩ"
+                      className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                      referrerPolicy="no-referrer"
+                    />
+                    {/* Atmospheric color gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent"></div>
+                  </div>
+
+                  <div className="p-5 bg-gradient-to-br from-slate-900 to-slate-950 text-white">
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
+                      <span className="text-[10px] font-mono tracking-widest text-emerald-400 uppercase font-semibold">Live Classroom Highlight</span>
+                    </div>
+                    <h3 className="text-base font-bold font-display leading-snug">Giải phóng tư duy toán học toàn diện</h3>
+                    <p className="text-xs text-slate-400 mt-1 leading-relaxed">Sự kết hợp hoàn hảo giữa bản đồ tư duy trực quan sống động và năng lực sư phạm đỉnh cao của các Thạc Sĩ.</p>
+                  </div>
+                </div>
+
+                {/* Quick achievements and key points */}
+                <div className="bg-slate-900 text-slate-100 rounded-3xl p-6 shadow-2xl border border-slate-800 glow-blue z-10 relative">
+                  <div className="flex items-center justify-between border-b border-slate-800 pb-4 mb-4">
                     <div className="flex items-center gap-2">
                       <span className="w-3 h-3 rounded-full bg-red-500" />
                       <span className="w-3 h-3 rounded-full bg-yellow-500" />
                       <span className="w-3 h-3 rounded-full bg-green-500" />
                     </div>
-                    <span className="text-xs font-mono text-slate-500">lộ trình bứt phá . io</span>
+                    <span className="text-xs font-mono text-slate-500">cam_ket_chat_luong.edu</span>
                   </div>
 
-                  <div className="space-y-4">
-                    <div className="bg-slate-800/80 p-4 rounded-xl border border-slate-700/50">
-                      <div className="flex justify-between items-center text-xs mb-1.5">
-                        <span className="text-brand-amber font-semibold uppercase tracking-wider">Ôn thi THPT Quốc Gia</span>
-                        <span className="text-emerald-400 font-bold bg-emerald-500/10 px-2 py-0.5 rounded">Tự tin 100%</span>
+                  <div className="bg-slate-950 p-5 rounded-2xl border border-blue-500/20 text-left space-y-3.5">
+                    <div className="text-[10px] text-brand-amber uppercase tracking-widest font-mono font-bold">Cam Kết Giáo Dục</div>
+                    <div className="space-y-2 text-xs sm:text-xs text-slate-300 leading-relaxed font-sans">
+                      <div className="flex items-start gap-2">
+                        <span className="text-brand-emerald font-bold">✓</span>
+                        <span><b>Sỹ số giới hạn:</b> Chỉ nhận tối đa từ 15-18 học sinh nhằm duy trì tương tác tốt nhất.</span>
                       </div>
-                      <h4 className="text-sm font-bold text-white font-display mb-1">Chuyên Đề Luyện Câu Vận Dụng Cao (9+)</h4>
-                      <p className="text-xs text-slate-400 leading-relaxed">Pháp bảo bí quyết biến đổi tích phân hàm ẩn, cực trị số phức phối hợp hình học tọa độ Oxyz.</p>
-                    </div>
-
-                    <div className="bg-slate-800/80 p-4 rounded-xl border border-slate-700/50">
-                      <div className="flex justify-between items-center text-xs mb-1.5">
-                        <span className="text-brand-blue-light font-semibold uppercase tracking-wider">Thi tuyển sinh lớp 10</span>
-                        <span className="text-blue-400 font-bold bg-blue-500/10 px-2 py-0.5 rounded">Bứt phá tốt</span>
+                      <div className="flex items-start gap-2">
+                        <span className="text-brand-emerald font-bold">✓</span>
+                        <span><b>Kiểm tra năng lực:</b> Test đầu vào 100% miễn phí để xây dựng giáo trình phù hợp từng em.</span>
                       </div>
-                      <h4 className="text-sm font-bold text-white font-display mb-1">Chinh Phục Câu Hình Học Thực Tế & Số Học</h4>
-                      <p className="text-xs text-slate-400 leading-relaxed">Học thuật chứng minh tứ giác nội tiếp & các dạng toán lượng giác thực tế độc đáo, dễ hiểu.</p>
-                    </div>
-
-                    {/* Quick interactive math trivia/tip */}
-                    <div className="bg-slate-950 p-5 rounded-2xl border border-blue-500/20 text-center min-h-[160px] flex flex-col justify-between transition-all duration-300 relative group overflow-hidden">
-                      <div className="absolute top-2 right-3 flex gap-2 z-10">
-                        <button 
-                          onClick={() => setCurrentQuoteIndex((prev) => (prev - 1 + inspirationalQuotes.length) % inspirationalQuotes.length)}
-                          className="p-1 hover:bg-white/10 rounded-lg text-slate-400 hover:text-white cursor-pointer transition-colors text-xs"
-                          title="Trước"
-                        >
-                          &larr;
-                        </button>
-                        <button 
-                          onClick={() => setCurrentQuoteIndex((prev) => (prev + 1) % inspirationalQuotes.length)}
-                          className="p-1 hover:bg-white/10 rounded-lg text-slate-400 hover:text-white cursor-pointer transition-colors text-xs"
-                          title="Sau"
-                        >
-                          &rarr;
-                        </button>
+                      <div className="flex items-start gap-2">
+                        <span className="text-brand-emerald font-bold">✓</span>
+                        <span><b>Bám sát đề mới:</b> Giáo án cập nhật chuẩn cấu trúc đánh giá năng lực & thi THPT của Bộ GD&ĐT.</span>
                       </div>
-                      
-                      <div className="my-auto">
-                        <div className="text-[10px] text-slate-500 uppercase tracking-widest font-mono mb-2">Triết lý học hành & vươn lên</div>
-                        <div className="text-xs sm:text-sm font-sans text-brand-amber font-medium italic px-2 leading-relaxed animate-fadeIn">
-                          "{inspirationalQuotes[currentQuoteIndex].content}"
-                        </div>
-                      </div>
-                      <div className="text-[10px] text-slate-450 font-semibold tracking-wider mt-3">
-                        - {inspirationalQuotes[currentQuoteIndex].author}
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="mt-5 grid grid-cols-2 gap-3 pt-5 border-t border-slate-800 text-center">
-                    <div>
-                      <div className="text-xl sm:text-2xl font-bold font-display text-white">96.5%</div>
-                      <div className="text-[10px] text-slate-400 uppercase tracking-wider mt-0.5">Học sinh đỗ nguyện vọng 1</div>
-                    </div>
-                    <div>
-                      <div className="text-xl sm:text-2xl font-bold font-display text-brand-emerald">9.2+</div>
-                      <div className="text-[10px] text-slate-400 uppercase tracking-wider mt-0.5">Điểm thi TB Nhóm nâng cao</div>
                     </div>
                   </div>
                 </div>
@@ -604,71 +543,6 @@ export default function App() {
             </div>
 
           </div>
-        </div>
-      </section>
-
-      {/* 3. CORE VALUES & METHODOLOGY SECTION */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-xs font-bold text-brand-emerald uppercase tracking-widest bg-emerald-50 px-3 py-1.5 rounded-full">Triết lý sư phạm ưu việt</span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold font-display leading-tight text-slate-900 mt-3">
-              Phương Pháp Dạy Học Bản Chất - Không Học Vẹt, Không Rập Khuôn
-            </h2>
-            <p className="text-sm sm:text-base text-slate-600 mt-2">
-              Chúng tôi tin rằng học Toán không phải là ghi nhớ máy móc các cấu trúc đề mà là rèn luyện tư duy logic vững chãi, giải phóng sự nhạy bén của trí tuệ.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            
-            {/* Card 1 */}
-            <div className="bg-slate-50 border border-slate-100 p-8 rounded-2xl hover:scale-[1.02] hover:bg-white hover:shadow-xl transition-all duration-200">
-              <div className="w-12 h-12 rounded-xl bg-orange-100 flex items-center justify-center text-brand-orange mb-6">
-                <GraduationCap className="w-6 h-6" />
-              </div>
-              <h3 className="text-lg font-bold font-display text-slate-900 mb-2">Đội Ngũ Master Đẳng Cấp</h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                Giảng viên trực tiếp giảng dạy đều có văn bằng Thạc sĩ Toán học xuất sắc từ các trường đại học uy tín hàng đầu TP.HCM, giỏi thực chiến ôn thi nước rút.
-              </p>
-            </div>
-
-            {/* Card 2 */}
-            <div className="bg-slate-50 border border-slate-100 p-8 rounded-2xl hover:scale-[1.02] hover:bg-white hover:shadow-xl transition-all duration-200">
-              <div className="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center text-brand-blue-light mb-6">
-                <Compass className="w-6 h-6" />
-              </div>
-              <h3 className="text-lg font-bold font-display text-slate-900 mb-2">Bản Đồ Tư Duy Chuẩn Hoá</h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                Mỗi dạng toán được bóc tách dưới góc nhìn cốt lõi bản chất lý thuyết, sơ đồ hóa cách phân biệt định lí, phát triển phản xạ tự luận chuyên nghiệp.
-              </p>
-            </div>
-
-            {/* Card 3 */}
-            <div className="bg-slate-50 border border-slate-100 p-8 rounded-2xl hover:scale-[1.02] hover:bg-white hover:shadow-xl transition-all duration-200">
-              <div className="w-12 h-12 rounded-xl bg-emerald-100 flex items-center justify-center text-brand-emerald mb-6">
-                <TrendingUp className="w-6 h-6" />
-              </div>
-              <h3 className="text-lg font-bold font-display text-slate-900 mb-2">Đồng Hành Cá Nhân Hóa</h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                Học sinh được phân bổ nhóm học phù hợp đúng năng lực. Bản báo cáo học tập định lượng sau mỗi buổi được cập nhật nhanh, báo điểm trực tiếp tới phụ huynh.
-              </p>
-            </div>
-
-            {/* Card 4 */}
-            <div className="bg-slate-50 border border-slate-100 p-8 rounded-2xl hover:scale-[1.02] hover:bg-white hover:shadow-xl transition-all duration-200">
-              <div className="w-12 h-12 rounded-xl bg-purple-100 flex items-center justify-center text-purple-600 mb-6">
-                <Star className="w-6 h-6" />
-              </div>
-              <h3 className="text-lg font-bold font-display text-slate-900 mb-2">Tài Liệu Độc Quyền</h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                Hệ thống giáo án thông minh liên tục cập nhật theo cấu trúc đề thi THPT, ĐGNL mới nhất. Bài tập mẫu được thầy cô quay dựng giải chi tiết từng bước.
-              </p>
-            </div>
-
-          </div>
-
         </div>
       </section>
 
@@ -687,7 +561,7 @@ export default function App() {
               Gặp Gỡ Đội Ngũ Sáng Lập & Giảng Viên
             </h2>
             <p className="text-sm sm:text-base text-slate-600 mt-2">
-              Học sinh được sát cánh trực tiếp cùng hai Thạc sĩ Toán học tâm huyết với bề dày nghiên cứu, sư phạm chuẩn mực và sự tận tụy trong từng dòng bài giảng.
+              Học sinh được học tập trực tiếp cùng thầy cô tâm huyết, vững kiến thức chuyên môn và luôn đồng hành sát sao trong suốt quá trình rèn luyện.
             </p>
           </div>
 
@@ -1041,169 +915,9 @@ export default function App() {
         </div>
       </section>
 
-      {/* 6. DYNAMIC MATH ROADMAP CALCULATOR SECTION */}
-      <section className="py-20 bg-slate-50 border-t border-b border-slate-200/60">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <span className="text-xs font-bold text-brand-blue-light uppercase tracking-widest bg-blue-50 px-3 py-1.5 rounded-full">Tính năng cao cấp</span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold font-display leading-tight text-slate-900 mt-3">
-              Cá Nhân Hóa Giáo Án Theo Năng Lực Học Sinh
-            </h2>
-            <p className="text-sm sm:text-base text-slate-600 mt-2">
-              Nhập nhanh kết quả học lực hiện tại để hệ thống phân tích chương trình thích hợp. Bản kế hoạch được truyền trực tiếp qua kênh liên lạc của Thạc sĩ.
-            </p>
-          </div>
+      {/* 5.5. EXHAUSTIVE FORMULA HANDBOOK & GEOMETRIC RESOURCE LIBRARY REMOVED */}
 
-          <MathPathEstimator />
-
-        </div>
-      </section>
-
-      {/* 7. INSPIRATIONAL SUCCESS PHILOSOPHY SECTION */}
-      <section className="py-20 bg-white relative overflow-hidden">
-        {/* Subtle decorative background equations */}
-        <div className="absolute top-10 right-0 w-80 h-80 bg-blue-50/30 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-10 left-0 w-80 h-80 bg-teal-50/20 rounded-full blur-3xl pointer-events-none" />
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-xs font-bold text-brand-emerald uppercase tracking-widest bg-emerald-50 px-3 py-1.5 rounded-full">Góc truyền cảm hứng</span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold font-display leading-tight text-slate-900 mt-3 animate-fadeIn">
-              Triết Lý Thành Công & Động Lực Học Tập
-            </h2>
-            <p className="text-sm sm:text-base text-slate-600 mt-2">
-              Tại Toán Thạc Sĩ, chúng tôi không chỉ truyền thụ kiến thức mà còn xây dựng bệ phóng tư duy, rèn luyện bản lĩnh kiên trì để học sinh vững vàng chinh phục mọi đỉnh cao.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            
-            {/* Quote 1: Jim Rohn */}
-            <div className="bg-gradient-to-br from-slate-50 to-white border border-slate-100/80 rounded-3xl p-8 flex flex-col justify-between relative hover:shadow-xl hover:border-brand-blue-light/10 hover:-translate-y-1 transition-all duration-300">
-              <span className="absolute top-4 right-6 text-7xl font-serif font-bold text-blue-500/10 select-none">“</span>
-              <div className="space-y-4">
-                <span className="text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 bg-blue-50 text-brand-blue-light rounded-md">Kỷ luật & Tự giác</span>
-                <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-medium italic pt-2">
-                  "Kỷ luật là cầu nối giữa mục tiêu và thành tựu."
-                </p>
-              </div>
-              <div className="pt-6 mt-6 border-t border-slate-100 flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center font-display font-extrabold text-xs text-brand-blue">
-                  JR
-                </div>
-                <div>
-                  <h4 className="text-sm font-bold text-slate-900">Jim Rohn</h4>
-                  <p className="text-[10px] text-slate-500">Chuyên gia Triết lý Phát triển Cá nhân</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Quote 2: Colin Powell */}
-            <div className="bg-gradient-to-br from-slate-50 to-white border border-slate-100/80 rounded-3xl p-8 flex flex-col justify-between relative hover:shadow-xl hover:border-brand-blue-light/10 hover:-translate-y-1 transition-all duration-300">
-              <span className="absolute top-4 right-6 text-7xl font-serif font-bold text-emerald-500/10 select-none">“</span>
-              <div className="space-y-4">
-                <span className="text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 bg-emerald-50 text-brand-emerald rounded-md">Kiên trì & Chăm chỉ</span>
-                <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-medium italic pt-2">
-                  "Thành công là kết quả của sự hoàn hảo, làm việc chăm chỉ, học hỏi từ thất bại, lòng trung thành và sự kiên trì."
-                </p>
-              </div>
-              <div className="pt-6 mt-6 border-t border-slate-100 flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center font-display font-extrabold text-xs text-brand-teal">
-                  CP
-                </div>
-                <div>
-                  <h4 className="text-sm font-bold text-slate-900">Colin Powell</h4>
-                  <p className="text-[10px] text-slate-500">Chính trị gia & Tướng lĩnh danh tiếng</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Quote 3: Vince Lombardi */}
-            <div className="bg-gradient-to-br from-slate-50 to-white border border-slate-100/80 rounded-3xl p-8 flex flex-col justify-between relative hover:shadow-xl hover:border-brand-blue-light/10 hover:-translate-y-1 transition-all duration-300">
-              <span className="absolute top-4 right-6 text-7xl font-serif font-bold text-orange-500/10 select-none">“</span>
-              <div className="space-y-4">
-                <span className="text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 bg-orange-50 text-brand-orange rounded-md">Khát vọng & Ý chí</span>
-                <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-medium italic pt-2">
-                  "Sự khác biệt giữa những người thành công và những người khác không phải là sự thiếu hụt sức mạnh, không phải là sự thiếu hụt kiến thức, mà đúng hơn là sự thiếu hụt ý chí."
-                </p>
-              </div>
-              <div className="pt-6 mt-6 border-t border-slate-100 flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center font-display font-extrabold text-xs text-brand-orange">
-                  VL
-                </div>
-                <div>
-                  <h4 className="text-sm font-bold text-slate-900">Vince Lombardi</h4>
-                  <p className="text-[10px] text-slate-500">Huyền thoại Sư phạm & Huấn luyện viên</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Quote 4: Henry Ford */}
-            <div className="bg-gradient-to-br from-slate-50 to-white border border-slate-100/80 rounded-3xl p-8 flex flex-col justify-between relative hover:shadow-xl hover:border-brand-emerald/10 hover:-translate-y-1 transition-all duration-300">
-              <span className="absolute top-4 right-6 text-7xl font-serif font-bold text-teal-500/10 select-none">“</span>
-              <div className="space-y-4">
-                <span className="text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 bg-teal-50 text-teal-700 rounded-md">Trải nghiệm & Bản lĩnh</span>
-                <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-medium italic pt-2">
-                  "Thất bại chỉ là cơ hội để bắt đầu lại một cách thông minh hơn."
-                </p>
-              </div>
-              <div className="pt-6 mt-6 border-t border-slate-100 flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-teal-100 flex items-center justify-center font-display font-extrabold text-xs text-brand-teal">
-                  HF
-                </div>
-                <div>
-                  <h4 className="text-sm font-bold text-slate-900">Henry Ford</h4>
-                  <p className="text-[10px] text-slate-500">Nhà phát minh & Doanh nhân vĩ đại</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Quote 5: Oprah Winfrey */}
-            <div className="bg-gradient-to-br from-slate-50 to-white border border-slate-100/80 rounded-3xl p-8 flex flex-col justify-between relative hover:shadow-xl hover:border-brand-orange/10 hover:-translate-y-1 transition-all duration-300">
-              <span className="absolute top-4 right-6 text-7xl font-serif font-bold text-purple-500/10 select-none">“</span>
-              <div className="space-y-4">
-                <span className="text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 bg-purple-50 text-purple-700 rounded-md">Đam mê & Tập trung</span>
-                <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-medium italic pt-2">
-                  "Đam mê là năng lượng. Hãy cảm nhận sức mạnh đến từ việc tập trung vào những gì làm bạn hứng thú."
-                </p>
-              </div>
-              <div className="pt-6 mt-6 border-t border-slate-100 flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center font-display font-extrabold text-xs text-purple-750">
-                  OW
-                </div>
-                <div>
-                  <h4 className="text-sm font-bold text-slate-900">Oprah Winfrey</h4>
-                  <p className="text-[10px] text-slate-500">Nữ hoàng truyền thông & Nhà hoạt động xã hội</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Quote 6: Walter Elliot */}
-            <div className="bg-gradient-to-br from-slate-50 to-white border border-slate-100/80 rounded-3xl p-8 flex flex-col justify-between relative hover:shadow-xl hover:border-brand-blue/10 hover:-translate-y-1 transition-all duration-300">
-              <span className="absolute top-4 right-6 text-7xl font-serif font-bold text-pink-500/10 select-none">“</span>
-              <div className="space-y-4">
-                <span className="text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 bg-rose-50 text-rose-700 rounded-md">Từng bước nhỏ vững chãi</span>
-                <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-medium italic pt-2">
-                  "Sự kiên trì không phải là một cuộc chạy đua đường dài; nó là nhiều cuộc chạy đua ngắn liên tiếp nhau."
-                </p>
-              </div>
-              <div className="pt-6 mt-6 border-t border-slate-100 flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-rose-100 flex items-center justify-center font-display font-extrabold text-xs text-rose-700">
-                  WE
-                </div>
-                <div>
-                  <h4 className="text-sm font-bold text-slate-900">Walter Elliot</h4>
-                  <p className="text-[10px] text-slate-500">Chính trị gia & Nhà văn học xuất sắc</p>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-      </section>
+      {/* 7. INSPIRATIONAL SUCCESS PHILOSOPHY SECTION REMOVED */}
 
       {/* 8. CONTACT & REGISTRATION SECTION */}
       <section id="register-form" className="py-20 bg-slate-50 relative">

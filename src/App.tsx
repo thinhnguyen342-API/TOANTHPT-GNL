@@ -35,6 +35,7 @@ import {
 
 import { classSchedules, teachers, testimonials, faqItems } from './data';
 import { ClassSchedule, Registration } from './types';
+import heroMathBanner from './assets/images/hero_math_banner_1779264546433.png';
 
 
 const APPS_SCRIPT_CODE = `function doGet(e) {
@@ -490,7 +491,7 @@ export default function App() {
                   {/* Generated math banner image! */}
                   <div className="aspect-[16/10] overflow-hidden bg-slate-900 relative">
                     <img
-                      src="/src/assets/images/hero_math_banner_1779264546433.png"
+                      src={heroMathBanner}
                       alt="Lớp học Toán Thạc sĩ"
                       className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                       referrerPolicy="no-referrer"

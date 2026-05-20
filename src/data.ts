@@ -74,7 +74,7 @@ export const teachers: Teacher[] = [
     avatarPlaceholder: 'NDT',
     avatarUrl: 'https://lh3.googleusercontent.com/d/1gsXqEjCkZo-Cslc9KDmVYpuP84NG6WtQ',
     characteristics: [
-      'Gần 10 năm kinh nghiệm bồi dưỡng học sinh lớp 9 ôn tuyển sinh và lớp 12 luyện thi đại học.',
+      'Trên 15 năm kinh nghiệm bồi dưỡng học sinh lớp 9 ôn tuyển sinh và lớp 12 luyện thi đại học.',
       'Phong cách giảng dạy logic, tối ưu hóa các bước tư duy, chuyên đào sâu bản chất Toán Giải Tích.',
       'Học viên yêu thích nhờ sự nhiệt huyết, theo sát học lực từng học sinh để can thiệp kịp thời.'
     ]

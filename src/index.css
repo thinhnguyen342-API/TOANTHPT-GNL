@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-display: "Montserrat", system-ui, -apple-system, sans-serif;
+  
+  --color-brand-blue: #0A2463;
+  --color-brand-blue-light: #2454FF;
+  --color-brand-royal: #1E3A8A;
+  --color-brand-emerald: #10B981;
+  --color-brand-teal: #059669;
+  --color-brand-amber: #F59E0B;
+  --color-brand-orange: #EA580C;
+  --color-brand-slate: #0F172A;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom styles for high-end glowing elements */
+.glow-blue {
+  box-shadow: 0 0 30px rgba(36, 84, 255, 0.15);
+}
+
+.glow-emerald {
+  box-shadow: 0 0 30px rgba(16, 185, 129, 0.15);
+}
+

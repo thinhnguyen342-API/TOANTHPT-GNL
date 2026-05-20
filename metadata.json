@@ -1,0 +1,6 @@
+{
+  "name": "Trung tâm Toán chất lượng cao",
+  "description": "Trang giới thiệu và đặt lịch học của trung tâm Toán chất lượng cao từ cơ bản đến nâng cao và luyện thi chuyên sâu.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

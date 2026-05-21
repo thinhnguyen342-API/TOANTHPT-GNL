@@ -30,7 +30,8 @@ import {
   Upload,
   Link,
   Database,
-  Copy
+  Copy,
+  Infinity as InfinityIcon
 } from 'lucide-react';
 
 import { classSchedules, teachers, testimonials, faqItems } from './data';
@@ -403,13 +404,13 @@ export default function App() {
               
               {/* Highlight Badge */}
               <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-blue-50 border border-blue-100 rounded-full text-brand-blue-light text-xs sm:text-sm font-semibold tracking-wide uppercase mx-auto lg:mx-0">
-                <Sparkles className="w-4 h-4 text-brand-amber" />
-                <span>Lớp học Toán chất lượng cao & hiệu quả</span>
+                <InfinityIcon className="w-4 h-4 text-brand-amber stroke-[2.5]" />
+                <span>Learn Smart - Succeed Fast</span>
               </div>
 
               {/* Gentle, humble and practical title */}
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold font-display leading-[1.1] tracking-tight text-slate-900">
-                Học Toán Bản Chất, <span className="bg-gradient-to-r from-brand-blue-light to-brand-blue bg-clip-text text-transparent">Chinh Phục</span> Điểm Số Cao
+                <span className="bg-gradient-to-r from-brand-blue-light to-brand-blue bg-clip-text text-transparent">Win Your Future</span>
               </h1>
 
               {/* M.Sc degree highlight requested */}

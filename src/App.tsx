@@ -37,6 +37,7 @@ import {
 import { classSchedules, teachers, testimonials, faqItems } from './data';
 import { ClassSchedule, Registration } from './types';
 import heroMathBanner from './assets/images/hero_math_banner_1779264546433.png';
+import HeroImageSlider from './components/HeroImageSlider';
 
 
 const APPS_SCRIPT_CODE = `function doGet(e) {
@@ -481,35 +482,8 @@ export default function App() {
                   πr²
                 </div>
 
-                {/* Primary Stunning High-Contrast Highlight Image Card with vibrant generated illustration */}
-                <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-blue-100/65 bg-white group hover:shadow-3xl transition-all duration-300 z-10">
-                  <div className="absolute top-4 left-4 z-20">
-                    <span className="text-[10px] font-bold uppercase tracking-widest bg-brand-blue/90 text-white px-3 py-1.5 rounded-full inline-block backdrop-blur-md shadow-md">
-                      Mô hình học tập tư duy
-                    </span>
-                  </div>
-
-                  {/* Generated math banner image! */}
-                  <div className="aspect-[16/10] overflow-hidden bg-slate-900 relative">
-                    <img
-                      src={heroMathBanner}
-                      alt="Lớp học Toán Thạc sĩ"
-                      className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
-                      referrerPolicy="no-referrer"
-                    />
-                    {/* Atmospheric color gradient overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent"></div>
-                  </div>
-
-                  <div className="p-5 bg-gradient-to-br from-slate-900 to-slate-950 text-white">
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
-                      <span className="text-[10px] font-mono tracking-widest text-emerald-400 uppercase font-semibold">Live Classroom Highlight</span>
-                    </div>
-                    <h3 className="text-base font-bold font-display leading-snug">Giải phóng tư duy toán học toàn diện</h3>
-                    <p className="text-xs text-slate-400 mt-1 leading-relaxed">Sự kết hợp hoàn hảo giữa bản đồ tư duy trực quan sống động và năng lực sư phạm đỉnh cao của các Thạc Sĩ.</p>
-                  </div>
-                </div>
+                {/* Primary Stunning High-Contrast Highlight Slide Show Component */}
+                <HeroImageSlider />
 
                 {/* Quick achievements and key points */}
                 <div className="bg-slate-900 text-slate-100 rounded-3xl p-6 shadow-2xl border border-slate-800 glow-blue z-10 relative">
